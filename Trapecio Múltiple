@@ -1,0 +1,22 @@
+Implementar la regla del trapecio para aproximar el área bajo la curva:
+La función a analizar será: integral (x+2/x)^2 ; límites a:1   b:2
+
+n = float(input("Introduzca la cantidad deseada de segmentos: "))
+a = 1
+b = 2
+
+def funcion(x): 
+    funcion = (x+(2/x))**2;  
+    return funcion
+
+def trapmult(a, b, n):
+    h = (b - a) / n
+    y = (funcion(a) + funcion(b))
+    
+    i = 1
+    while i < n:
+        y += 2 * funcion(a + i * h)
+        i += 1
+        
+    return ((h / 2) * y)
+print ("El valor de la integral es: ", trapmult(a, b, n))
